@@ -1,0 +1,139 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-25T17:33:32.834Z",
+    "end": "2025-12-25T17:33:37.954Z",
+    "duration": 5120,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "117beeab-f8cf-422d-a887-bf189d219e50",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cac6d212-79d9-41b5-8ff3-86cca889ed91",
+          "title": "Login Sukses",
+          "fullFile": "E:\\PYTHON\\Belajar QA Automation\\SauceDemo-Selenium\\test-SauceDemo\\login-test-sauce.js",
+          "file": "\\test-SauceDemo\\login-test-sauce.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login dengan password dan username valid",
+              "fullTitle": "Login Sukses Login dengan password dan username valid",
+              "timedOut": false,
+              "duration": 2205,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Membuka Chrome\ndriver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://www.saucedemo.com/');\n//Input Login\nlet inputUsername = await driver.findElement(By.xpath('//*[@id=\"user-name\"]'))\nlet inputPassword = await driver.findElement(By.css('[data-test=\"password\"]'))\nlet buttonLogin = await driver.findElement(By.className(\"submit-button\"))\n//Actions Username, password, dan button login\nawait inputUsername.sendKeys('standard_user')\nawait inputPassword.sendKeys('secret_sauce')\nawait buttonLogin.click()\n//Assertion & Validation apakah benar masuk kedalam inventory_list\n await driver.wait(until.elementLocated(By.className('inventory_list')),10000);\n //mengecek apakah benar titlenya Swag Labs\n const title = await driver.getTitle();\n assert.strictEqual(title, 'Swag Labs');",
+              "err": {},
+              "uuid": "584606d8-825e-42b2-99a3-0b9f47687f6f",
+              "parentUUID": "cac6d212-79d9-41b5-8ff3-86cca889ed91",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "584606d8-825e-42b2-99a3-0b9f47687f6f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2205,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "70845af3-0355-4d9e-9520-3e206882f091",
+          "title": "Login Sukses",
+          "fullFile": "E:\\PYTHON\\Belajar QA Automation\\SauceDemo-Selenium\\test-SauceDemo\\sort-inventory.js",
+          "file": "\\test-SauceDemo\\sort-inventory.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login dan Sortir Produk Z ke A",
+              "fullTitle": "Login Sukses Login dan Sortir Produk Z ke A",
+              "timedOut": false,
+              "duration": 2907,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Membuka Chrome\ndriver = await new Builder().forBrowser('chrome').build();        \n//Membuka Website\nawait driver.get('https://www.saucedemo.com/');\n//Proses Login\nawait driver.findElement(By.id('user-name')).sendKeys('standard_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\nawait driver.findElement(By.id('login-button')).click();\n//Memastikan apakh sudah masuk ke halaman produk (Tunggu sampai list produk muncul)\nawait driver.wait(until.elementLocated(By.className('inventory_list')), 60000);\n//Proses Klik Dropdown Sortir dan Pilih \"Name (A to Z)\"\n// Kita langsung tembak ke option dengan value \"az\"\nawait driver.findElement(By.css('option[value=\"az\"]')).click();\n// 6. Ambil teks dari produk pertama yang muncul setelah disortir\nlet produkPertama = await driver.findElement(By.className('inventory_item_name')).getText();\n// 7. Assert (Validasi): cek produk pertama\"\nassert.strictEqual(produkPertama, 'Sauce Labs Backpack');",
+              "err": {},
+              "uuid": "7f117d9d-f0a1-4aba-a6bd-df344166dcdd",
+              "parentUUID": "70845af3-0355-4d9e-9520-3e206882f091",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7f117d9d-f0a1-4aba-a6bd-df344166dcdd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2907,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
