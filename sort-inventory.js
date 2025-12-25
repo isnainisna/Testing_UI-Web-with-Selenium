@@ -17,11 +17,12 @@ describe('Login Sukses', function() {
             //Memastikan apakh sudah masuk ke halaman produk (Tunggu sampai list produk muncul)
             await driver.wait(until.elementLocated(By.className('inventory_list')), 60000);
             //Proses Klik Dropdown Sortir dan Pilih "Name (A to Z)"
-            // Kita langsung tembak ke option dengan value "az"
+            //langsung tembak ke option dengan value "az"
             await driver.findElement(By.css('option[value="az"]')).click();
-            // 6. Ambil teks dari produk pertama yang muncul setelah disortir
+            //Ambil teks dari produk pertama yang muncul setelah disortir
             let produkPertama = await driver.findElement(By.className('inventory_item_name')).getText();
-            // 7. Assert (Validasi): cek produk pertama"
+            //Assert (Validasi): cek produk pertama"
             assert.strictEqual(produkPertama, 'Sauce Labs Backpack');
         });
+
         });
